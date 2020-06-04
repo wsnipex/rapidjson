@@ -155,7 +155,7 @@ TEST_F(Platform, mmap) {
         int fd = open(filename_, O_RDONLY);
         ASSERT_NE(-1, fd);
         void *p = mmap(NULL, length_, PROT_READ, MAP_PRIVATE, fd, 0);
-        ASSERT_TRUE(p != NULL);
+        ASSERT_TRUE(p != MAP_FAILED);
         EXPECT_EQ(checkSum_, CheckSum());
         munmap(p, length_);
         close(fd);
